@@ -22,24 +22,25 @@ int main(int argc, const char * argv[]) {
     
     @autoreleasepool {
         
-        TipoCoche coche;
-        TipoCoche coche2;
-        
-        coche.precio=4000;
-        coche.kilometros=60000.40;
-        strcpy(coche.modelo, "Opel Corsa");
-        NSLog(@"Mi coche cuesta €%i", coche.precio);
-        NSLog(@"Mi coche tiene %fKm", coche.kilometros);
-        NSLog(@"Mi coche es un %s", coche.modelo);
-        
-        coche2.precio=1200;
-        coche2.kilometros=200;
-        strcpy(coche2.modelo, "Toyota Avensis");
-        NSLog(@"Mi coche cuesta €%i", coche2.precio);
-        NSLog(@"Mi coche tiene %fKm", coche2.kilometros);
-        NSLog(@"Mi coche es un %s", coche2.modelo);
+        TipoCoche listaCoches[20];
         
         
+        listaCoches[0].precio=4000;
+        listaCoches[0].kilometros=60000.40;
+        strcpy(listaCoches[0].modelo, "Opel Corsa");
+        
+        listaCoches[1].precio=12000;
+        listaCoches[1].kilometros=2000;
+        strcpy(listaCoches[1].modelo, "Toyota Avensis");
+        
+        for (int n=0; n<2; n++) {
+            NSLog(@"Mi coche cuesta €%i", listaCoches[n].precio);
+            NSLog(@"Mi coche tiene %fKm", listaCoches[n].kilometros);
+            NSLog(@"Mi coche es un %s", listaCoches[n].modelo);
+        }
+        
+        
+
         
     }
     return 0;
