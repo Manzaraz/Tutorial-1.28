@@ -6,42 +6,39 @@
 //
 
 #import <Foundation/Foundation.h>
+#include "T_ListaCoches.h"
 
-
-struct automovil {
-    int precio;
-    float kilometros;
-    char modelo[50];
-};
-
-
-typedef struct automovil TipoCoche;
-
+void mostrarCoches(T_ListaCoches lista);
+void mostrarCoche(T_Coche coche);
 
 int main(int argc, const char * argv[]) {
     
     @autoreleasepool {
         
-        TipoCoche listaCoches[20];
+        T_ListaCoches concesionario;
         
+        concesionario=inicializarLista(concesionario);
         
-        listaCoches[0].precio=4000;
-        listaCoches[0].kilometros=60000.40;
-        strcpy(listaCoches[0].modelo, "Opel Corsa");
+        concesionario=insertarCoche(concesionario, "Opel Corsa", 4000, 60000.40);
+        concesionario=insertarCoche(concesionario, "Toyota Avensis", 12000, 2000);
         
-        listaCoches[1].precio=12000;
-        listaCoches[1].kilometros=2000;
-        strcpy(listaCoches[1].modelo, "Toyota Avensis");
-        
-        for (int n=0; n<2; n++) {
-            NSLog(@"Mi coche cuesta €%i", listaCoches[n].precio);
-            NSLog(@"Mi coche tiene %fKm", listaCoches[n].kilometros);
-            NSLog(@"Mi coche es un %s", listaCoches[n].modelo);
-        }
-        
-        
-
-        
+        mostrarCoches(concesionario);
     }
     return 0;
+}
+
+
+
+void mostrarCoches(T_ListaCoches lista) {
+    for (int n=0; n<numeroCoches(lista); n++) {
+        NSLog(@"Coche #%i", n);
+        mostrarCoche(obtenerCoche(lista, n));
+    }
+}
+
+
+void mostrarCoche(T_Coche coche) {
+    NSLog(@"El Coche es un %s", coche.modelo);
+    NSLog(@"Cuesta €%i", coche.precio);
+    NSLog(@"Tiene %fKm", coche.kilometros);
 }
